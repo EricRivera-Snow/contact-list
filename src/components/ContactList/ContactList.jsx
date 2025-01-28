@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ContactRow from "../ContactRow/ContactRow";
+
+import axios from "axios";
 
 const dummyContacts = [
   { id: 1, name: "R2-D2", phone: "222-222-2222", email: "r2d2@droids.com" },
@@ -9,6 +11,14 @@ const dummyContacts = [
 
 function ContactList() {
   const [contacts, setContacts] = useState(dummyContacts);
+  useEffect(() => {
+    axios("https://fsa-jsonplaceholder-69b5c48f1259.herokuapp.com/users")
+      .then((data) => {
+        console.log(data.data);
+        setContacts(data.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   console.log("contacts: ", contacts);
   return (
     <table>
