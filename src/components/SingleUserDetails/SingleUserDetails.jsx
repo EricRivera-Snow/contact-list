@@ -13,6 +13,10 @@ function SingleUserDetails({ setFeaturedUser, featuredUser }) {
       })
       .catch((err) => console.error(err));
   }, []);
+
+  if (!userDetails)
+    return <p style={{ fontSize: "100px", fontWeight: "bold" }}>Loading...</p>;
+
   return (
     <div>
       <h2>Details for {userDetails?.name}</h2>
