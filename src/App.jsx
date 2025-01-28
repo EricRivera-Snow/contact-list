@@ -9,7 +9,10 @@ function App() {
     <>
       <h2>{featuredUser}</h2>
       {featuredUser ? (
-        <SingleUserDetails setFeaturedUser={setFeaturedUser}/>
+        <SingleUserDetails
+          setFeaturedUser={setFeaturedUser}
+          featuredUser={featuredUser}
+        />
       ) : (
         <ContactList setFeaturedUser={setFeaturedUser} />
       )}
